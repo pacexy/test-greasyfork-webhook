@@ -37,3 +37,4 @@ jobs:
           file: dist/*.user.js
           file_glob: true
           tag: ${{ github.ref }}
+          draft: true
