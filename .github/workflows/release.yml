@@ -25,15 +25,8 @@ jobs:
       - run: pnpm install
       - run: pnpm run build
 
-      - run: npx changelogithub --draft
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
       # Upload the userscript so Greasy Fork can auto-update it via webhook
       # See: https://greasyfork.org/en/users/webhook-info
-      - uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: dist/*.user.js
-          file_glob: true
-          tag: ${{ github.ref }}
+      - run: npx changelogithub --draft --assets dist/*.user.js
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
