@@ -25,7 +25,7 @@ jobs:
       - run: pnpm install
       - run: pnpm run build
 
-      - run: npx changelogithub
+      - run: npx changelogithub --draft
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
@@ -37,4 +37,3 @@ jobs:
           file: dist/*.user.js
           file_glob: true
           tag: ${{ github.ref }}
-          draft: true
